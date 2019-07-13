@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D517733D22D3F94F001FEDCA /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733922D3F94F001FEDCA /* MainStore.swift */; };
-		D517733E22D3F94F001FEDCA /* MainReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733A22D3F94F001FEDCA /* MainReducer.swift */; };
 		D517733F22D3F94F001FEDCA /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733B22D3F94F001FEDCA /* MainState.swift */; };
-		D517734022D3F94F001FEDCA /* MainMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733C22D3F94F001FEDCA /* MainMiddleware.swift */; };
 		D517734322D658A9001FEDCA /* CombineRex in Frameworks */ = {isa = PBXBuildFile; productRef = D517734222D658A9001FEDCA /* CombineRex */; };
 		D517734722D65A5A001FEDCA /* CountMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734622D65A5A001FEDCA /* CountMessage.swift */; };
 		D517734922D65AD1001FEDCA /* CountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734822D65AD1001FEDCA /* CountState.swift */; };
@@ -23,13 +20,11 @@
 		D582132D22D3E7DF00BF4BE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D582132C22D3E7DF00BF4BE2 /* Preview Assets.xcassets */; };
 		D582133022D3E7DF00BF4BE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D582132E22D3E7DF00BF4BE2 /* LaunchScreen.storyboard */; };
 		D59213D022D6674E00AE914B /* Button+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59213CF22D6674E00AE914B /* Button+Extension.swift */; };
+		D5CF088322DA2E7100CFD1F1 /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF088222DA2E7100CFD1F1 /* MainStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D517733922D3F94F001FEDCA /* MainStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainStore.swift; path = SwiftRexUI/Redux/MainStore.swift; sourceTree = SOURCE_ROOT; };
-		D517733A22D3F94F001FEDCA /* MainReducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainReducer.swift; path = SwiftRexUI/Redux/MainReducer.swift; sourceTree = SOURCE_ROOT; };
 		D517733B22D3F94F001FEDCA /* MainState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainState.swift; path = SwiftRexUI/Redux/MainState.swift; sourceTree = SOURCE_ROOT; };
-		D517733C22D3F94F001FEDCA /* MainMiddleware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMiddleware.swift; path = SwiftRexUI/Redux/MainMiddleware.swift; sourceTree = SOURCE_ROOT; };
 		D517734622D65A5A001FEDCA /* CountMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMessage.swift; sourceTree = "<group>"; };
 		D517734822D65AD1001FEDCA /* CountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountState.swift; sourceTree = "<group>"; };
 		D517734C22D65B18001FEDCA /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
@@ -43,6 +38,7 @@
 		D582132F22D3E7DF00BF4BE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D582133122D3E7DF00BF4BE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D59213CF22D6674E00AE914B /* Button+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extension.swift"; sourceTree = "<group>"; };
+		D5CF088222DA2E7100CFD1F1 /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,20 +57,10 @@
 			isa = PBXGroup;
 			children = (
 				D517734522D65A4F001FEDCA /* Count */,
-				D517734422D65A3F001FEDCA /* Main */,
+				D517733B22D3F94F001FEDCA /* MainState.swift */,
+				D5CF088222DA2E7100CFD1F1 /* MainStore.swift */,
 			);
 			path = Redux;
-			sourceTree = "<group>";
-		};
-		D517734422D65A3F001FEDCA /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				D517733C22D3F94F001FEDCA /* MainMiddleware.swift */,
-				D517733A22D3F94F001FEDCA /* MainReducer.swift */,
-				D517733B22D3F94F001FEDCA /* MainState.swift */,
-				D517733922D3F94F001FEDCA /* MainStore.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		D517734522D65A4F001FEDCA /* Count */ = {
@@ -205,18 +191,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D517734022D3F94F001FEDCA /* MainMiddleware.swift in Sources */,
-				D517733D22D3F94F001FEDCA /* MainStore.swift in Sources */,
 				D517734F22D65EE7001FEDCA /* CountMiddleware.swift in Sources */,
 				D582132422D3E7DE00BF4BE2 /* AppDelegate.swift in Sources */,
 				D517734D22D65B18001FEDCA /* CountReducer.swift in Sources */,
 				D59213D022D6674E00AE914B /* Button+Extension.swift in Sources */,
 				D582132622D3E7DE00BF4BE2 /* SceneDelegate.swift in Sources */,
 				D582132822D3E7DE00BF4BE2 /* ContentView.swift in Sources */,
+				D5CF088322DA2E7100CFD1F1 /* MainStore.swift in Sources */,
 				D517734922D65AD1001FEDCA /* CountState.swift in Sources */,
 				D517733F22D3F94F001FEDCA /* MainState.swift in Sources */,
 				D517734722D65A5A001FEDCA /* CountMessage.swift in Sources */,
-				D517733E22D3F94F001FEDCA /* MainReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

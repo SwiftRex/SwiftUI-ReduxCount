@@ -34,16 +34,16 @@ struct ContentView : View {
         VStack {
             HStack {
                 Text("Start time:")
-                Text("\(DateFormatter.localizedString(from: store.startTime, dateStyle: .short, timeStyle: .medium))")
+                Text("\(DateFormatter.localizedString(from: store.state.startTime, dateStyle: .short, timeStyle: .medium))")
             }
 
             HStack {
                 // With this convenient extension you don't need closures. Please find it at `Button+Extension.swift`
                 Button("🔽", store: store, event: CountEvent.minusTap)
                 
-                Text("\(store.countState.currentCount)")
+                Text("\(store.state.countState.currentCount)")
                 Text("since")
-                Text("\(DateFormatter.localizedString(from: store.countState.lastChange, dateStyle: .short, timeStyle: .medium))")
+                Text("\(DateFormatter.localizedString(from: store.state.countState.lastChange, dateStyle: .short, timeStyle: .medium))")
 
                 // Without the extension is not so bad too
                 Button("🔼") {
