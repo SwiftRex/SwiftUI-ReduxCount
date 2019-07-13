@@ -15,7 +15,7 @@ private let mainMiddleware = CountMiddleware().lift(\MainState.countState)
 
 typealias MainStore = BindableStore<MainState>
 let store = MainStore(
-    initialState: .init(startTime: Date(), countState: .init()),
+    initialState: .initial,
     reducer: mainReducer,
     middleware: mainMiddleware
 )

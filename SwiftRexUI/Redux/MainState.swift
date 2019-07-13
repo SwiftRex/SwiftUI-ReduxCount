@@ -12,3 +12,9 @@ public struct MainState: Codable, Equatable {
     public let startTime: Date
     public var countState: CountState
 }
+
+extension MainState {
+    static var initial: MainState {
+        .init(startTime: Date(), countState: .init())
+    }
+}
