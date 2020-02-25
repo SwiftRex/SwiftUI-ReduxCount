@@ -1,5 +1,5 @@
 //
-//  MainState.swift
+//  AppState.swift
 //  SwiftRexUI
 //
 //  Created by Luiz Rodrigo Martins Barbosa on 08.07.19.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-public struct MainState: Codable, Equatable {
+public struct AppState: Codable, Equatable {
     public let startTime: Date
     public var countState: CountState
 }
 
-extension MainState {
-    static var initial: MainState {
+extension AppState {
+    static var initial: AppState {
         .init(startTime: Date(), countState: .init())
     }
 }

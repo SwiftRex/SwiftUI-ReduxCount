@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D517733F22D3F94F001FEDCA /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733B22D3F94F001FEDCA /* MainState.swift */; };
-		D517734322D658A9001FEDCA /* CombineRex in Frameworks */ = {isa = PBXBuildFile; productRef = D517734222D658A9001FEDCA /* CombineRex */; };
-		D517734722D65A5A001FEDCA /* CountMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734622D65A5A001FEDCA /* CountMessage.swift */; };
+		D517733F22D3F94F001FEDCA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517733B22D3F94F001FEDCA /* AppState.swift */; };
+		D517734722D65A5A001FEDCA /* CountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734622D65A5A001FEDCA /* CountAction.swift */; };
 		D517734922D65AD1001FEDCA /* CountState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734822D65AD1001FEDCA /* CountState.swift */; };
 		D517734D22D65B18001FEDCA /* CountReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734C22D65B18001FEDCA /* CountReducer.swift */; };
 		D517734F22D65EE7001FEDCA /* CountMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D517734E22D65EE7001FEDCA /* CountMiddleware.swift */; };
@@ -20,12 +19,16 @@
 		D582132D22D3E7DF00BF4BE2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D582132C22D3E7DF00BF4BE2 /* Preview Assets.xcassets */; };
 		D582133022D3E7DF00BF4BE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D582132E22D3E7DF00BF4BE2 /* LaunchScreen.storyboard */; };
 		D59213D022D6674E00AE914B /* Button+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59213CF22D6674E00AE914B /* Button+Extension.swift */; };
-		D5CF088322DA2E7100CFD1F1 /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF088222DA2E7100CFD1F1 /* MainStore.swift */; };
+		D5CF088322DA2E7100CFD1F1 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CF088222DA2E7100CFD1F1 /* Store.swift */; };
+		D6B724B52405CF1F00D9D0DF /* CombineRex in Frameworks */ = {isa = PBXBuildFile; productRef = D6B724B42405CF1F00D9D0DF /* CombineRex */; };
+		D6B724B72405D3A300D9D0DF /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B724B62405D3A300D9D0DF /* AppAction.swift */; };
+		D6B724B92405D80700D9D0DF /* UserInputAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B724B82405D80700D9D0DF /* UserInputAction.swift */; };
+		D6B724BB2405E1D800D9D0DF /* LoggerMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B724BA2405E1D800D9D0DF /* LoggerMiddleware.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D517733B22D3F94F001FEDCA /* MainState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainState.swift; path = SwiftRexUI/Redux/MainState.swift; sourceTree = SOURCE_ROOT; };
-		D517734622D65A5A001FEDCA /* CountMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMessage.swift; sourceTree = "<group>"; };
+		D517733B22D3F94F001FEDCA /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = SwiftRexUI/Redux/AppState.swift; sourceTree = SOURCE_ROOT; };
+		D517734622D65A5A001FEDCA /* CountAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountAction.swift; sourceTree = "<group>"; };
 		D517734822D65AD1001FEDCA /* CountState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountState.swift; sourceTree = "<group>"; };
 		D517734C22D65B18001FEDCA /* CountReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountReducer.swift; sourceTree = "<group>"; };
 		D517734E22D65EE7001FEDCA /* CountMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountMiddleware.swift; sourceTree = "<group>"; };
@@ -38,7 +41,10 @@
 		D582132F22D3E7DF00BF4BE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D582133122D3E7DF00BF4BE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D59213CF22D6674E00AE914B /* Button+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Extension.swift"; sourceTree = "<group>"; };
-		D5CF088222DA2E7100CFD1F1 /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
+		D5CF088222DA2E7100CFD1F1 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		D6B724B62405D3A300D9D0DF /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		D6B724B82405D80700D9D0DF /* UserInputAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputAction.swift; sourceTree = "<group>"; };
+		D6B724BA2405E1D800D9D0DF /* LoggerMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerMiddleware.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D517734322D658A9001FEDCA /* CombineRex in Frameworks */,
+				D6B724B52405CF1F00D9D0DF /* CombineRex in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,8 +63,10 @@
 			isa = PBXGroup;
 			children = (
 				D517734522D65A4F001FEDCA /* Count */,
-				D517733B22D3F94F001FEDCA /* MainState.swift */,
-				D5CF088222DA2E7100CFD1F1 /* MainStore.swift */,
+				D6B724B62405D3A300D9D0DF /* AppAction.swift */,
+				D517733B22D3F94F001FEDCA /* AppState.swift */,
+				D6B724BA2405E1D800D9D0DF /* LoggerMiddleware.swift */,
+				D5CF088222DA2E7100CFD1F1 /* Store.swift */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -66,10 +74,11 @@
 		D517734522D65A4F001FEDCA /* Count */ = {
 			isa = PBXGroup;
 			children = (
-				D517734622D65A5A001FEDCA /* CountMessage.swift */,
+				D517734622D65A5A001FEDCA /* CountAction.swift */,
 				D517734E22D65EE7001FEDCA /* CountMiddleware.swift */,
 				D517734C22D65B18001FEDCA /* CountReducer.swift */,
 				D517734822D65AD1001FEDCA /* CountState.swift */,
+				D6B724B82405D80700D9D0DF /* UserInputAction.swift */,
 			);
 			path = Count;
 			sourceTree = "<group>";
@@ -131,7 +140,7 @@
 			);
 			name = SwiftRexUI;
 			packageProductDependencies = (
-				D517734222D658A9001FEDCA /* CombineRex */,
+				D6B724B42405CF1F00D9D0DF /* CombineRex */,
 			);
 			productName = SwiftRexUI;
 			productReference = D582132022D3E7DD00BF4BE2 /* SwiftRexUI.app */;
@@ -162,7 +171,7 @@
 			);
 			mainGroup = D582131722D3E7DD00BF4BE2;
 			packageReferences = (
-				D517734122D658A9001FEDCA /* XCRemoteSwiftPackageReference "SwiftRex" */,
+				D6B724B32405CF1F00D9D0DF /* XCRemoteSwiftPackageReference "SwiftRex" */,
 			);
 			productRefGroup = D582132122D3E7DD00BF4BE2 /* Products */;
 			projectDirPath = "";
@@ -195,12 +204,15 @@
 				D582132422D3E7DE00BF4BE2 /* AppDelegate.swift in Sources */,
 				D517734D22D65B18001FEDCA /* CountReducer.swift in Sources */,
 				D59213D022D6674E00AE914B /* Button+Extension.swift in Sources */,
+				D6B724B72405D3A300D9D0DF /* AppAction.swift in Sources */,
+				D6B724BB2405E1D800D9D0DF /* LoggerMiddleware.swift in Sources */,
+				D6B724B92405D80700D9D0DF /* UserInputAction.swift in Sources */,
 				D582132622D3E7DE00BF4BE2 /* SceneDelegate.swift in Sources */,
 				D582132822D3E7DE00BF4BE2 /* ContentView.swift in Sources */,
-				D5CF088322DA2E7100CFD1F1 /* MainStore.swift in Sources */,
+				D5CF088322DA2E7100CFD1F1 /* Store.swift in Sources */,
 				D517734922D65AD1001FEDCA /* CountState.swift in Sources */,
-				D517733F22D3F94F001FEDCA /* MainState.swift in Sources */,
-				D517734722D65A5A001FEDCA /* CountMessage.swift in Sources */,
+				D517733F22D3F94F001FEDCA /* AppState.swift in Sources */,
+				D517734722D65A5A001FEDCA /* CountAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,20 +408,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D517734122D658A9001FEDCA /* XCRemoteSwiftPackageReference "SwiftRex" */ = {
+		D6B724B32405CF1F00D9D0DF /* XCRemoteSwiftPackageReference "SwiftRex" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftRex/SwiftRex";
 			requirement = {
-				branch = develop;
+				branch = master;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D517734222D658A9001FEDCA /* CombineRex */ = {
+		D6B724B42405CF1F00D9D0DF /* CombineRex */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D517734122D658A9001FEDCA /* XCRemoteSwiftPackageReference "SwiftRex" */;
+			package = D6B724B32405CF1F00D9D0DF /* XCRemoteSwiftPackageReference "SwiftRex" */;
 			productName = CombineRex;
 		};
 /* End XCSwiftPackageProductDependency section */

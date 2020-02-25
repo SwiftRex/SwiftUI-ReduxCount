@@ -22,7 +22,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: ContentView().environmentObject(store))
+
+            // In real life this would be made by a Presenter and View Event / View Model types would be known only between view and presenter
+            let storeProjection = store.projection(
+                action: { (viewAction: UserInputAction) -> AppAction in
+                    // Transforms view events into app actions.
+                    // In real life apps UserInputAction would not necessarily be something in the AppAction tree, can be something more local to
+                    // the view/presenter
+                    return AppAction.userInput(viewAction)
+                },
+                state: { (appState: AppState) -> AppState in
+                    // Transforms App global state into view state.
+                    // In real life apps the return would be a view model, not visible to the Store, but something more local to the view/presenter
+                    return appState
+                }
+            )
+            
+            window.rootViewController = UIHostingController(rootView:
+                ContentView(store: storeProjection.asObservableViewModel(initialState: .initial))
+            )
             self.window = window
             window.makeKeyAndVisible()
         }

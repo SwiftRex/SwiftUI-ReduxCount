@@ -6,6 +6,7 @@
 //  Copyright © 2019 Luiz Rodrigo Martins Barbosa. All rights reserved.
 //
 
+import CombineRex
 import SwiftUI
 
 struct ContentView : View {
@@ -28,7 +29,7 @@ struct ContentView : View {
      SceneDelegate:
          `ContentView().environmentObject(store)`
      */
-    @EnvironmentObject var store: MainStore
+    @ObservedObject var store: ObservableViewModel<UserInputAction, AppState>
 
     var body: some View {
         VStack {
@@ -39,7 +40,7 @@ struct ContentView : View {
 
             HStack {
                 // With this convenient extension you don't need closures. Please find it at `Button+Extension.swift`
-                Button("🔽", store: store, event: CountEvent.minusTap)
+                Button("🔽", store: store, event: .minusTap)
                 
                 Text("\(store.state.countState.currentCount)")
                 Text("since")
@@ -47,7 +48,7 @@ struct ContentView : View {
 
                 // Without the extension is not so bad too
                 Button("🔼") {
-                    self.store.eventHandler.dispatch(CountEvent.plusTap)
+                    self.store.dispatch(.plusTap)
                 }
             }
         }
@@ -57,7 +58,14 @@ struct ContentView : View {
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView(store: .mock(state: .initial))
+
+            ContentView(store: .mock(state: AppState(
+                startTime: Date.distantPast,
+                countState: CountState(currentCount: 42, lastChange: Date())
+            )))
+        }
     }
 }
 #endif

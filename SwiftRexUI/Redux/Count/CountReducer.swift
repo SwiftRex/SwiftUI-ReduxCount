@@ -9,8 +9,8 @@
 import Foundation
 import SwiftRex
 
-let countReducer = Reducer<CountState> { state, action in
-    guard let action = action as? CountAction else { return state }
+/// Main app reducer. Given some action and current state, calculates the new state
+let countReducer = Reducer<CountAction, CountState> { action, state in
     switch action {
     case .incrementCount:
         return CountState(currentCount: state.currentCount + 1, lastChange: Date())

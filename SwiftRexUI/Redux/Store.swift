@@ -1,0 +1,156 @@
+//
+//  Store.swift
+//  SwiftRexUI
+//
+//  Created by Luiz Rodrigo Martins Barbosa on 13.07.19.
+//  Copyright © 2019 Luiz Rodrigo Martins Barbosa. All rights reserved.
+//
+
+import CombineRex
+import Foundation
+import SwiftRex
+
+// Our Reducer<CountAction, CountState> is generic over Count things.
+// We need to lift action to work as AppAction and the state to work as AppState, because these are the expected entities
+// handled by our store.
+// So let's lift CountAction -> AppAction by extracting possible CountAction from AppActions we receive (.countAction case).
+// If we can't extract, means that our Reducer doesn't care about other action types.
+// And also let's lift CountState -> AppState by providing a getters and setters to the AppState.countState property (reducer
+// needs writable access because it reads and writes the state).
+private let mainReducer = countReducer.lift(
+    actionGetter: { (globalAction: AppAction) -> CountAction? in
+        guard case let .countAction(countAction) = globalAction else {
+            // This is not a CountAction, our Reducer doesn't care about other actions, for example UserInputAction
+            // are ignored by this reducer
+            return nil
+        }
+        // This is a CountAction, our Reducer wants to know about it
+        return countAction
+    },
+    stateGetter: { (globalState: AppState) -> CountState in
+        return globalState.countState
+    },
+    stateSetter: { (mutableGlobalState, newCountStateValue) in
+        mutableGlobalState.countState = newCountStateValue
+    }
+)
+// Although the code above works, there's a much easier way of lifting Reducers, check below (*)
+
+// ---
+
+// This example is very silly, we wouldn't need a middleware for that.
+// Our CountMiddleware works with UserInputAction as input and CountAction as output, and doesn't read state.
+// We need to lift both actions (input and output) to be the same as the Store one (AppAction), and lifting the
+// state is only a matter of ignoring the AppState and giving Void to the Middleware, as it doesn't need state.
+// In a proper middleware that needs State, you would go from AppState to whatever State it needs
+private let mainMiddleware =
+    Logger.middleware() <>
+    CountMiddleware().lift(
+        inputActionMap: { (globalAction: AppAction) -> UserInputAction? in
+            guard case let .userInput(userInputAction) = globalAction else {
+                // This is not a UserInputAction, our Middleware doesn't care about other actions, for example CountActions
+                // are ignored by this reducer
+                return nil
+            }
+            // This is a UserInputAction, our Middleware wants to know about it
+            return userInputAction
+        },
+        outputActionMap: { (countAction: CountAction) -> AppAction in
+            // This middleware has dispatched CountAction to the store. Because this store expects AppAction, we just wrap it in a new
+            // AppAction using the .countAction case:
+            return AppAction.countAction(countAction)
+        },
+        stateMap: { (globalState: AppState) -> Void in
+            // This middleware doesn't care about the state, so we ignore globalState and return Void. Otherwise we could traverse
+            // globalState and find a property that would match the Middleware expected type.
+        }
+    )
+// Although the code above works, there's a much easier way of lifting Middlewares, check below (*)
+
+class Store: ReduxStoreBase<AppAction, AppState> {
+    init() {
+        super.init(
+            subject: .combine(initialValue: .initial),
+            reducer: mainReducer,
+            middleware: mainMiddleware,
+            emitsValue: .whenDifferent
+        )
+    }
+}
+
+let store = Store()
+
+
+// (*)
+// Swift gives keypaths for structs, but not for enum cases. This is because enum cases are not automatically synthesized as instance properties.
+// However, with a bit of code-generation you can create extend enums to have properties from their cases, and this will unlock getters and setters
+// for them, keypaths and other composition features.
+// You can use https://github.com/pointfreeco/swift-enum-properties, https://github.com/pointfreeco/swift-case-paths or Sourcery
+// (https://github.com/krzysztofzablocki/Sourcery) templates to generate them. Your lift functions then would become:
+/*
+```
+private let mainReducer = countReducer.lift(action: \AppAction.countAction, state: \AppState.countState)
+
+private let mainMiddleware: LiftMiddleware<AppAction, AppAction, AppState, CountMiddleware> =
+    CountMiddleware().lift(
+        inputActionMap: { $0.userInput },
+        outputActionMap: { AppAction.countAction($0) },
+        stateMap: { _ in }
+    )
+```
+*/
+
+// It would be possible to simplify even more the middleware lifting above by using keypaths, but this long version shows better what's happening.
+
+// The boilerplate generated by tools in order to create something like that would be:
+/*
+```
+extension AppAction {
+    public var countAction: CountAction? {
+        get {
+            guard case let .countAction(countAction) = self else { return nil }
+            return countAction
+        }
+    }
+
+    public var userInput: UserInputAction? {
+        get {
+            guard case let .userInput(userInput) = self else { return nil }
+            return userInput
+        }
+    }
+}
+
+extension UserInputAction {
+    public var minusTap: Void? {
+        get {
+            guard case .minusTap = self else { return nil }
+            return ()
+        }
+    }
+
+    public var plusTap: Void? {
+        get {
+            guard case .plusTap = self else { return nil }
+            return ()
+        }
+    }
+}
+
+extension CountAction {
+    public var incrementCount: Void? {
+        get {
+            guard case .incrementCount = self else { return nil }
+            return ()
+        }
+    }
+
+    public var decrementCount: Void? {
+        get {
+            guard case .decrementCount = self else { return nil }
+            return ()
+        }
+    }
+}
+```
+*/

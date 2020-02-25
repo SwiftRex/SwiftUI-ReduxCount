@@ -1,5 +1,5 @@
 //
-//  CountEvent.swift
+//  CountAction.swift
 //  SwiftRexUI
 //
 //  Created by Luiz Rodrigo Martins Barbosa on 10.07.19.
@@ -9,12 +9,8 @@
 import Foundation
 import SwiftRex
 
-enum CountEvent: EventProtocol {
-    case minusTap
-    case plusTap
-}
-
-enum CountAction: ActionProtocol {
+/// App Actions that will run through the Store in order to trigger side-effects or help reducing the state
+public enum CountAction {
     case incrementCount
     case decrementCount
 }
